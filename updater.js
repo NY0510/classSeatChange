@@ -26,7 +26,7 @@ module.exports = () => {
 	autoUpdater.once("download-progress", progressObj => {
 		progressBar = new ProgressBar({
 			text: "다운로드 중...",
-			detail: "다운로드 중...",
+			detail: "업데이트에 필요한 데이터를 다운로드 중입니다",
 		});
 
 		progressBar
