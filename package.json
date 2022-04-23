@@ -1,0 +1,54 @@
+{
+	"name": "classSeatChange",
+	"version": "1.2.2",
+	"description": "자리뽑기",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "electron .",
+		"build": "electron-builder --windows"
+	},
+	"build": {
+		"productName": "자리자리자리",
+		"appId": "kr.ny64.kr.classSeatChange",
+		"copyright": "© 2022 NY64. All rights reserved.",
+		"asar": true,
+		"protocols": {
+			"name": "test",
+			"schemes": [
+				"test"
+			]
+		},
+		"win": {
+			"target": [
+				"zip",
+				"nsis"
+			]
+		},
+		"nsis": {
+			"oneClick": true,
+			"allowToChangeInstallationDirectory": false,
+			"deleteAppDataOnUninstall": true,
+			"createDesktopShortcut": true,
+			"installerIcon": "icon.ico",
+			"uninstallerIcon": "icon.ico",
+			"uninstallDisplayName": "자리자리자리"
+		},
+		"directories": {
+			"buildResources": "./assets",
+			"output": "./build"
+		}
+	},
+	"keywords": [],
+	"author": "NY64",
+	"license": "ISC",
+	"dependencies": {
+		"check-internet-connected": "^2.0.5",
+		"electron-progressbar": "^2.0.1",
+		"electron-updater": "^4.6.5"
+	},
+	"devDependencies": {
+		"electron": "^14.0.0",
+		"electron-builder": "^22.11.7"
+	}
+}
