@@ -55,7 +55,9 @@ const createWindow = () => {
 	const newMenu = Menu.buildFromTemplate(templete);
 	Menu.setApplicationMenu(newMenu);
 
-	mainWindow.setTitle("자리자리자리");
+	// mainWindow.setTitle("자리자리자리");
+	const version = app.getVersion();
+	mainWindow.setTitle(`자리자리자리 v${version}`);
 
 	mainWindow.loadURL(
 		url.format({
