@@ -1,6 +1,6 @@
 {
 	"name": "classSeatChange",
-	"version": "1.2.2",
+	"version": "2.0.0",
 	"description": "자리뽑기",
 	"main": "main.js",
 	"scripts": {
@@ -8,11 +8,19 @@
 		"start": "electron .",
 		"build": "electron-builder --windows"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NY0510/classSeatChange.git"
+	},
 	"build": {
 		"productName": "자리자리자리",
 		"appId": "kr.ny64.kr.classSeatChange",
+		"artifactName": "ClassSeatChange-Setup-${version}.${ext}",
 		"copyright": "© 2022 NY64. All rights reserved.",
 		"asar": true,
+		"publish": {
+			"provider": "github"
+		},
 		"protocols": {
 			"name": "test",
 			"schemes": [
@@ -21,7 +29,6 @@
 		},
 		"win": {
 			"target": [
-				"zip",
 				"nsis"
 			]
 		},

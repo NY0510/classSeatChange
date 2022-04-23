@@ -55,6 +55,8 @@ const createWindow = () => {
 	const newMenu = Menu.buildFromTemplate(templete);
 	Menu.setApplicationMenu(newMenu);
 
+	mainWindow.setTitle("자리자리자리");
+
 	mainWindow.loadURL(
 		url.format({
 			pathname: path.join(__dirname, "index.html"),
@@ -63,15 +65,12 @@ const createWindow = () => {
 		})
 	);
 	contents = mainWindow.webContents;
-
-	contents = mainWindow.webContents;
-	contents.openDevTools();
+	// contents.openDevTools();
 };
 
-app.on("ready", createWindow, () => {
-	console.log("ready");
-});
+app.on("ready", createWindow);
 
+console.log("update start");
 updater();
 
 app.on("closed", () => {
