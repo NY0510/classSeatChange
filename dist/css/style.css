@@ -206,7 +206,13 @@ button {
 	overflow-y: auto;
 }
 
-#table #column {
+# #table2 {
+	margin-top: 13%;
+	position: absolute;
+	width: 100%;
+	display: none;
+}
+#column {
 	flex: 1;
 	/* display: flex; */
 	flex-direction: column;
@@ -265,4 +271,11 @@ button {
 	#navbar #ba {
 		font-size: 5vw;
 	}
+}
+
+#table.table2 {
+	margin-top: 13%;
+	position: absolute;
+	width: 100%;
+	display: none;
 }

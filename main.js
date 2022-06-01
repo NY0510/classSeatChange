@@ -1,19 +1,20 @@
-const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu;
+const { Menu, MenuItem, ipcMain, BrowserWindow, app } = require("electron");
 const path = require("path");
 const url = require("url");
 const updater = require("./updater");
 
-let mainWindow;
+let win;
 
 const createWindow = () => {
-	mainWindow = new BrowserWindow({
+	console.log("update start");
+	updater();
+
+	win = new BrowserWindow({
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
+		show: false,
 		backgroundColor: "#272727",
 		width: 900,
 		height: 850,
@@ -21,60 +22,77 @@ const createWindow = () => {
 		minHeight: 850,
 		icon: path.join(__dirname, "assets", "icon.ico"),
 	});
-	const templete = [
-		{
-			label: "Edit",
-			submenu: [
-				{
-					role: "zoomIn",
-					accelerator: "CommandOrControl+=",
-				},
-				{
-					role: "zoomOut",
-				},
-				{
-					role: "resetZoom",
-				},
-				{
-					role: "reload",
-				},
-				{
-					type: "separator",
-				},
-				{
-					id: "print",
-					label: "PDF로 내보내기",
-					accelerator: "CommandOrControl+P",
-					click: e => {
-						mainWindow.webContents.send("print", e.checked);
-					},
-				},
-			],
-		},
-	];
-	const newMenu = Menu.buildFromTemplate(templete);
-	Menu.setApplicationMenu(newMenu);
 
-	// mainWindow.setTitle("자리자리자리");
+	win.once("ready-to-show", () => win.show());
+
 	const version = app.getVersion();
-	mainWindow.setTitle(`자리자리자리 v${version}`);
+	win.setTitle(`자리자리자리 v${version}`);
 
-	mainWindow.loadURL(
+	win.loadURL(
 		url.format({
 			pathname: path.join(__dirname, "index.html"),
 			protocol: "file:",
 			slashes: true,
 		})
 	);
-	contents = mainWindow.webContents;
-	// contents.openDevTools();
+
+	win.webContents.openDevTools();
+};
+
+const menu = new Menu();
+menu.append(
+	new MenuItem({
+		label: "Edit",
+		submenu: [
+			{
+				role: "zoomIn",
+				accelerator: "CommandOrControl+=",
+			},
+			{
+				role: "zoomOut",
+			},
+			{
+				role: "resetZoom",
+			},
+			{
+				role: "reload",
+			},
+			{
+				type: "separator",
+			},
+			{
+				id: "print",
+				label: "PDF로 내보내기",
+				accelerator: "CommandOrControl+P",
+				click: e => {
+					win.webContents.send("print", e.checked);
+				},
+			},
+		],
+	})
+);
+menu.append(
+	new MenuItem({
+		label: "Settings",
+		submenu: [
+			{
+				id: "jujak",
+				label: "Not nearby",
+				type: "checkbox",
+				click: e => {
+					console.log("jujakMode", e.checked);
+					win.webContents.send("jujakMode", e.checked);
+				},
+			},
+		],
+	})
+);
+
+Menu.setApplicationMenu(menu);
+
+const quit = () => {
+	if (process.platform !== "darwin") app.quit();
 };
 
 app.on("ready", createWindow);
-
-console.log("update start");
-updater();
-
-app.on("closed", () => {
-	mainWindow = null;
-});
+app.on("window-all-closed", quit);
