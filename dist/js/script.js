@@ -113,7 +113,8 @@ function nearCheck() {
 }
 
 function ifJujakMode(boolean) {
-	toggleButton.checked = true;
+	shuffle = true;
+	toggleButton.checked = shuffle;
 	boolean ? document.getElementsByClassName("slider round")[0].classList.add("disabled") : document.getElementsByClassName("slider round")[0].classList.remove("disabled");
 	toggleButton.disabled = boolean;
 }
@@ -212,7 +213,7 @@ const change = range => {
 					}
 				}
 			}
-			if (nearCheck()) startButton.click();
+			if (jujakMode && nearCheck()) startButton.click();
 		});
 	} else if (range == "notall") {
 		// 남자
@@ -240,7 +241,7 @@ const change = range => {
 					}
 				}
 			}
-			if (nearCheck()) startButton.click();
+			if (jujakMode && nearCheck()) startButton.click();
 		});
 
 		// 여자
@@ -275,7 +276,7 @@ const change = range => {
 			// 4-6 한자리 남는거 (남자가 더 적어서)
 			divText(4, 6, 16, output);
 
-			if (nearCheck()) startButton.click();
+			if (jujakMode && nearCheck()) startButton.click();
 		});
 	}
 };
