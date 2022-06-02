@@ -77,7 +77,7 @@ menu.append(
 		submenu: [
 			{
 				id: "jujak",
-				label: "Not nearby",
+				label: "N-NE",
 				type: "checkbox",
 				click: e => {
 					console.log("jujakMode", e.checked);
