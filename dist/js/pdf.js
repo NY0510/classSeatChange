@@ -12,8 +12,8 @@ function pdfDownload(tableData) {
 	// console.log(tableData);
 	pdfMake.fonts = {
 		Pretendard: {
-			normal: "https://raw.githubusercontent.com/orioncactus/pretendard/main/dist/public/static/alternative/Pretendard-Regular.ttf",
-			bold: "https://raw.githubusercontent.com/orioncactus/pretendard/main/dist/public/static/alternative/Pretendard-Bold.ttf",
+			normal: "https://file.ny64.kr/font/Pretendard-Regular.ttf",
+			bold: "https://file.ny64.kr/font/Pretendard-Bold.ttf",
 		},
 	};
 	const data = {

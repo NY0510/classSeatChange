@@ -7,7 +7,7 @@ let win;
 
 const createWindow = () => {
 	console.log("update start");
-	updater();
+	// updater();
 
 	win = new BrowserWindow({
 		webPreferences: {
