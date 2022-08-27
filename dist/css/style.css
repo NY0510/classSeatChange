@@ -219,8 +219,12 @@ button {
 }
 
 #table #column #item {
+	width: 90px;
+	height: 55px;
 	padding: 5px;
-	margin: 2.5px;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+	margin: auto;
 	flex: 1;
 	text-align: center;
 	background: #121212;

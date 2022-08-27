@@ -71,22 +71,6 @@ menu.append(
 		],
 	})
 );
-menu.append(
-	new MenuItem({
-		label: "Settings",
-		submenu: [
-			{
-				id: "jujak",
-				label: "N-NE",
-				type: "checkbox",
-				click: e => {
-					console.log("jujakMode", e.checked);
-					win.webContents.send("jujakMode", e.checked);
-				},
-			},
-		],
-	})
-);
 
 Menu.setApplicationMenu(menu);
 
