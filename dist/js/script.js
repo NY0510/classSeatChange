@@ -92,8 +92,8 @@ startButton.addEventListener("click", function () {
 resetButton.addEventListener("click", function () {
 	d = 0;
 	for (var i = 1; i < 5; i++) {
-		// 2 3 분단
-		if (i == 2 || i == 3) {
+		// 1 2 3 분단
+		if (i == 1 || i == 2 || i == 3) {
 			for (var j = 1; j < 6; j++) {
 				var x = document.getElementsByName(`${i}-${j}`);
 				x[0].innerText = "???";
@@ -135,10 +135,12 @@ const change = range => {
 
 			d = 0;
 			for (var i = 1; i < 5; i++) {
+				//4
 				// 분단별 반복
 				for (var j = 1; j < 6; j++) {
+					//5
 					// 세로 자리별 반복
-					if (i == 2 || i == 3) {
+					if (i == 1 || i == 2 || i == 3) {
 						for (var j = 1; j < 6; j++) {
 							divText(i, j, d, output);
 							d++;
@@ -209,6 +211,8 @@ const change = range => {
 					}
 				}
 			}
+
+			divText(1, 5, 9, output);
 		});
 	}
 };

@@ -36,7 +36,7 @@ const createWindow = () => {
 		})
 	);
 
-	// win.webContents.openDevTools();
+	win.webContents.openDevTools();
 };
 
 const menu = new Menu();

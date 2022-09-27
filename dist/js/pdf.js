@@ -32,6 +32,31 @@ function pdfDownload(tableData) {
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 
 							{
+								text: tableData[14],
+								margin: [13, 2.5],
+							},
+							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
+
+							{
+								text: tableData[9],
+								margin: [13, 2.5],
+							},
+							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
+
+							{
+								text: tableData[4],
+								margin: [13, 2.5],
+							},
+							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
+						],
+						[
+							{
+								text: tableData[18],
+								margin: [13, 2.5],
+							},
+							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
+
+							{
 								text: tableData[13],
 								margin: [13, 2.5],
 							},
@@ -44,8 +69,8 @@ function pdfDownload(tableData) {
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 
 							{
-								border: [false, false, false, true],
-								text: "",
+								text: tableData[3],
+								margin: [13, 2.5],
 							},
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 						],
@@ -69,7 +94,7 @@ function pdfDownload(tableData) {
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 
 							{
-								text: tableData[3],
+								text: tableData[2],
 								margin: [13, 2.5],
 							},
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
@@ -94,7 +119,7 @@ function pdfDownload(tableData) {
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 
 							{
-								text: tableData[2],
+								text: tableData[1],
 								margin: [13, 2.5],
 							},
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
@@ -119,31 +144,6 @@ function pdfDownload(tableData) {
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 
 							{
-								text: tableData[1],
-								margin: [13, 2.5],
-							},
-							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
-						],
-						[
-							{
-								text: tableData[14],
-								margin: [13, 2.5],
-							},
-							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
-
-							{
-								text: tableData[9],
-								margin: [13, 2.5],
-							},
-							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
-
-							{
-								text: tableData[4],
-								margin: [13, 2.5],
-							},
-							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
-
-							{
 								text: tableData[0],
 								margin: [13, 2.5],
 							},
@@ -159,7 +159,7 @@ function pdfDownload(tableData) {
 					body: [
 						[
 							{
-								text: "교탁\n[ 남 9 / 여 9 ]",
+								text: "교탁\n[ 남 9 / 여 10 ]",
 								margin: [50, 5],
 							},
 						],
