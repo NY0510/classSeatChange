@@ -26,8 +26,8 @@ function pdfDownload(tableData) {
 					body: [
 						[
 							{
-								border: [false, false, false, true],
-								text: "",
+								text: tableData[19],
+								margin: [13, 2.5],
 							},
 							{ text: " ", margin: [4, 5], border: [false, false, false, false] },
 

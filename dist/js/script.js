@@ -26,7 +26,7 @@ let shuffle = JSON.parse(localStorage.getItem("shuffle")) || false;
 
 window.addEventListener("DOMContentLoaded", function () {
 	// 로컬 DB에 저장된 토글버튼 값 복원
-	toggleButton.checked = shuffle;
+	// toggleButton.checked = shuffle;
 
 	resetButton.disabled = true; // 초기화버튼 비활성화
 	// 키 입력 이벤트 리스너
@@ -78,7 +78,7 @@ const getTableData = () => {
 
 toggleButton.addEventListener("click", function () {
 	shuffle = !shuffle;
-	localStorage.setItem("shuffle", shuffle); // 로컬 DB에 토글버튼 값 저장
+	// localStorage.setItem("shuffle", shuffle); // 로컬 DB에 토글버튼 값 저장
 });
 
 startButton.addEventListener("click", function () {
@@ -139,17 +139,9 @@ const change = range => {
 				// 분단별 반복
 				for (var j = 1; j < 6; j++) {
 					//5
-					// 세로 자리별 반복
-					if (i == 1 || i == 2 || i == 3) {
-						for (var j = 1; j < 6; j++) {
-							divText(i, j, d, output);
-							d++;
-						}
-					} else {
-						for (var j = 1; j < 5; j++) {
-							divText(i, j, d, output);
-							d++;
-						}
+					for (var j = 1; j < 6; j++) {
+						divText(i, j, d, output);
+						d++;
 					}
 				}
 			}
@@ -197,14 +189,8 @@ const change = range => {
 			d = 0;
 			for (var i = 1; i < 5; i++) {
 				for (var j = 1; j < 6; j++) {
-					if (i == 2) {
+					if (i == 2 || i == 4) {
 						for (var j = 1; j < 6; j++) {
-							divText(i, j, d, output);
-							d++;
-						}
-					}
-					if (i == 4) {
-						for (var j = 1; j < 5; j++) {
 							divText(i, j, d, output);
 							d++;
 						}
