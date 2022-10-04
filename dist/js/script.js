@@ -198,7 +198,7 @@ const change = range => {
 				}
 			}
 
-			divText(1, 5, 9, output);
+			divText(1, 5, 10, output);
 		});
 	}
 };
