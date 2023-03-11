@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 // prettier-ignore
-const readFile = (a,c) => {var b=new XMLHttpRequest();b.overrideMimeType("application/json");b.open("GET",a,true);b.onreadystatechange=function(){if(b.readyState===4&&b.status=="200"){c(b.responseText)}};b.send(null)}
+const readFile = (a,c) => {let b=new XMLHttpRequest();b.overrideMimeType("application/json");b.open("GET",a,true);b.onreadystatechange=function(){if(b.readyState===4&&b.status=="200"){c(b.responseText)}};b.send(null)}
 
 const divText = (i, j, num, data) => {
 	let x = document.getElementsByName(`${i}-${j}`);
@@ -76,14 +76,13 @@ const getTableData = () => {
 	return tableData;
 };
 
-toggleButton.addEventListener("click", function () {
-	shuffle = !shuffle;
-	// localStorage.setItem("shuffle", shuffle); // 로컬 DB에 토글버튼 값 저장
-});
+// toggleButton.addEventListener("click", function () {
+// 	shuffle = !shuffle;
+// 	// localStorage.setItem("shuffle", shuffle); // 로컬 DB에 토글버튼 값 저장
+// });
 
 startButton.addEventListener("click", function () {
-	if (shuffle) change("all");
-	else change("notall");
+	change("all");
 
 	// 초기화버튼 활성화
 	resetButton.disabled = false;
@@ -91,23 +90,26 @@ startButton.addEventListener("click", function () {
 
 resetButton.addEventListener("click", function () {
 	d = 0;
-	for (var i = 1; i < 5; i++) {
-		// 1 2 3 분단
-		if (i == 1 || i == 2 || i == 3) {
-			for (var j = 1; j < 6; j++) {
-				var x = document.getElementsByName(`${i}-${j}`);
+	for (let i = 1; i < 6; i++) {
+		if (i != 1) {
+			for (let j = 1; j < 5; j++) {
+				let x = document.getElementsByName(`${i}-${j}`);
+				console.log(x);
 				x[0].innerText = "???";
 				x[1].innerText = "?";
 				d++;
+				// console.log(i, j);
 			}
 		}
 		// 나머지
 		else {
-			for (var j = 1; j < 5; j++) {
-				var x = document.getElementsByName(`${i}-${j}`);
+			for (let j = 1; j < 6; j++) {
+				let x = document.getElementsByName(`${i}-${j}`);
+				console.log(x);
 				x[0].innerText = "???";
 				x[1].innerText = "?";
 				d++;
+				// console.log(i, j);
 			}
 		}
 	}
@@ -123,82 +125,51 @@ const isDuplicate = arr => {
 };
 
 const change = range => {
-	if (range == "all") {
-		readFile("dist/data.json", data => {
-			var input = JSON.parse(data);
-			var output = [];
+	readFile("dist/data.json", data => {
+		let input = JSON.parse(data);
+		let output = [];
 
-			while (input.length > 0) {
-				var temp = input.splice(Math.floor(Math.random() * input.length), 1)[0];
-				output.push(temp);
-			}
+		while (input.length > 0) {
+			let temp = input.splice(Math.floor(Math.random() * input.length), 1)[0];
+			output.push(temp);
+		}
 
-			d = 0;
-			for (var i = 1; i < 5; i++) {
-				//4
-				// 분단별 반복
-				for (var j = 1; j < 6; j++) {
-					//5
-					for (var j = 1; j < 6; j++) {
-						divText(i, j, d, output);
-						d++;
-					}
+		console.log(output);
+
+		d = 0;
+		for (let i = 1; i < 6; i++) {
+			if (i != 1) {
+				for (let j = 1; j < 5; j++) {
+					divText(i, j, d, output);
+					d++;
 				}
 			}
-		});
-	} else if (range == "notall") {
-		// 남자
-		readFile("dist/m.json", data => {
-			var input = JSON.parse(data);
-			var output = [];
-
-			while (input.length > 0) {
-				var temp = input.splice(Math.floor(Math.random() * input.length), 1)[0];
-				output.push(temp);
-			}
-
-			d = 0;
-			for (var i = 1; i < 5; i++) {
-				for (var j = 1; j < 6; j++) {
-					if (i == 1) {
-						for (var j = 1; j < 5; j++) {
-							divText(i, j, d, output);
-							d++;
-						}
-					}
-					if (i == 3) {
-						for (var j = 1; j < 6; j++) {
-							divText(i, j, d, output);
-							d++;
-						}
-					}
-				}
-			}
-		});
-
-		// 여자
-		readFile("dist/f.json", data => {
-			var input = JSON.parse(data);
-			var output = [];
-
-			while (input.length > 0) {
-				var temp = input.splice(Math.floor(Math.random() * input.length), 1)[0];
-				output.push(temp);
-			}
-
-			d = 0;
-			for (var i = 1; i < 5; i++) {
-				for (var j = 1; j < 6; j++) {
-					if (i == 2 || i == 4) {
-						for (var j = 1; j < 6; j++) {
-							divText(i, j, d, output);
-							d++;
-						}
-					}
+			// 나머지
+			else {
+				for (let j = 1; j < 6; j++) {
+					divText(i, j, d, output);
+					d++;
 				}
 			}
 
-			divText(1, 5, 10, output);
-		});
-	}
+			// if (i == 1) {
+			// 	for (let j = 1; j < 6; j++) {
+			// 		divText(i, j, d, output);
+			// 		d++;
+			// 	}
+			// } else {
+			// 	//4
+			// 	// 분단별 반복
+			// 	// for (let j = 1; j < 6; j++) {
+			// 	//5
+			// 	for (let j = 1; j < 5; j++) {
+			// 		divText(i, j, d, output);
+			// 		d++;
+			// 	}
+			// 	// }
+			// }
+		}
+	});
+
+	// divText(1, 5, 10, output);
 };

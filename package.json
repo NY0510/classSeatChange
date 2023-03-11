@@ -6,7 +6,13 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "electron .",
-		"build": "electron-builder --windows"
+		"build:osx": "electron-builder --mac",
+		"build:linux": "npm run build:linux32 && npm run build:linux64",
+		"build:linux32": "electron-builder --linux --ia32",
+		"build:linux64": "electron-builder --linux --x64",
+		"build:win": "npm run build:win32 && npm run build:win64",
+		"build:win32": "electron-builder --win --ia32",
+		"build:win64": "electron-builder --win --x64"
 	},
 	"repository": {
 		"type": "git",
@@ -18,13 +24,23 @@
 		"artifactName": "ClassSeatChange-Setup-${version}.${ext}",
 		"copyright": "© 2022 NY64. All rights reserved.",
 		"asar": true,
+		"mac": {
+			"target": [
+				"default"
+			],
+			"icon": "assets/icon.icns"
+		},
+		"dmg": {
+			"title": "자리자리자리",
+			"icon": "assets/icon.icns"
+		},
 		"publish": {
 			"provider": "github"
 		},
 		"protocols": {
-			"name": "test",
+			"name": "자리자리자리",
 			"schemes": [
-				"test"
+				"TEST"
 			]
 		},
 		"win": {
@@ -55,7 +71,7 @@
 		"electron-updater": "^4.6.5"
 	},
 	"devDependencies": {
-		"electron": "^14.0.0",
-		"electron-builder": "^22.11.7"
+		"electron": "^22.0.0",
+		"electron-builder": "^23.6.0"
 	}
 }
