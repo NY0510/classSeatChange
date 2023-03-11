@@ -26,7 +26,7 @@ const createWindow = () => {
 	win.once("ready-to-show", () => win.show());
 
 	const version = app.getVersion();
-	win.setTitle(`자리자리자리 v${version}`);
+	win.setTitle(`자리자리자리 v${version} (10401 김가온 개발)`);
 
 	win.loadURL(
 		url.format({
