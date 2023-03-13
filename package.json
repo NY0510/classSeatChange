@@ -1,6 +1,6 @@
 {
 	"name": "classSeatChange",
-	"version": "5.0.1",
+	"version": "5.1.0",
 	"description": "자리뽑기",
 	"main": "main.js",
 	"scripts": {
