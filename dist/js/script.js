@@ -4,6 +4,8 @@ const resetButton = document.querySelector("#resetBtn");
 const startButton = document.querySelector("#startBtn");
 const toggleButton = document.querySelector("#cheakbox");
 
+let hana = false;
+
 window.onload = () => {
 	document.getElementById("table").classList.add("transition");
 	document.getElementsByClassName("top")[0].classList.add("transition");
@@ -12,6 +14,11 @@ window.onload = () => {
 
 ipcRenderer.on("print", (e, ...args) => {
 	pdfDownload(getTableData());
+});
+
+ipcRenderer.on("hana", (e, ...args) => {
+	hana = args[0];
+	console.log(`hana is ${hana}`);
 });
 
 let jujakMode = false;
@@ -137,37 +144,45 @@ const change = range => {
 		console.log(output);
 
 		d = 0;
-		for (let i = 1; i < 6; i++) {
-			if (i != 1) {
-				for (let j = 1; j < 5; j++) {
-					divText(i, j, d, output);
-					d++;
-				}
-			}
-			// 나머지
-			else {
-				for (let j = 1; j < 6; j++) {
-					divText(i, j, d, output);
-					d++;
-				}
+		if (hana) {
+			let i = 1;
+			function loop() {
+				setTimeout(() => {
+					if (i != 1) {
+						for (let j = 1; j < 5; j++) {
+							divText(i, j, d, output);
+							d++;
+						}
+					}
+					// 나머지
+					else {
+						for (let j = 1; j < 6; j++) {
+							divText(i, j, d, output);
+							d++;
+						}
+					}
+					i++;
+					if (i < 6) loop();
+				}, 500);
 			}
 
-			// if (i == 1) {
-			// 	for (let j = 1; j < 6; j++) {
-			// 		divText(i, j, d, output);
-			// 		d++;
-			// 	}
-			// } else {
-			// 	//4
-			// 	// 분단별 반복
-			// 	// for (let j = 1; j < 6; j++) {
-			// 	//5
-			// 	for (let j = 1; j < 5; j++) {
-			// 		divText(i, j, d, output);
-			// 		d++;
-			// 	}
-			// 	// }
-			// }
+			loop();
+		} else {
+			for (let i = 1; i < 6; i++) {
+				if (i != 1) {
+					for (let j = 1; j < 5; j++) {
+						divText(i, j, d, output);
+						d++;
+					}
+				}
+				// 나머지
+				else {
+					for (let j = 1; j < 6; j++) {
+						divText(i, j, d, output);
+						d++;
+					}
+				}
+			}
 		}
 	});
 

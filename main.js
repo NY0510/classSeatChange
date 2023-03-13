@@ -68,6 +68,15 @@ menu.append(
 					win.webContents.send("print", e.checked);
 				},
 			},
+			{
+				id: "hana",
+				label: "하나씩",
+				type: "checkbox",
+				click: e => {
+					const checked = e.checked;
+					win.webContents.send("hana", checked);
+				},
+			},
 		],
 	})
 );
