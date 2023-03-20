@@ -1,4 +1,4 @@
-const { Menu, MenuItem, ipcMain, BrowserWindow, app } = require("electron");
+const { Menu, MenuItem, BrowserWindow, app } = require("electron");
 const path = require("path");
 const url = require("url");
 const updater = require("./updater");
@@ -6,7 +6,6 @@ const updater = require("./updater");
 let win;
 
 const createWindow = () => {
-	console.log("update start");
 	updater();
 
 	win = new BrowserWindow({
@@ -70,7 +69,7 @@ menu.append(
 			},
 			{
 				id: "hana",
-				label: "하나씩",
+				label: "하나씩 뽑기",
 				type: "checkbox",
 				click: e => {
 					const checked = e.checked;
